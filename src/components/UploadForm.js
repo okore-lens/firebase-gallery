@@ -10,7 +10,7 @@ const UploadForm = () => {
 
   const changeHandler = (ev) => {
     let selected = ev.target.files[0];
-    console.log(selected.type);
+    // console.log(selected.type);
 
     //validating selected file
     if (selected && types.includes(selected.type)) {
@@ -24,9 +24,12 @@ const UploadForm = () => {
 
   return (
     <form>
-      <input type="file" onChange={changeHandler} />
+      <label>
+        <input type="file" onChange={changeHandler} />
+        <span>+</span>
+      </label>
       <div className="output">
-        {error && <div>{error}</div>}
+        {error && <div className="error">{error}</div>}
         {file && <div>{file.name}</div>}
         {file && <ProgressBar file={file} setFile={setFile} />}
       </div>
